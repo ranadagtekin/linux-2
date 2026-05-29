@@ -1,0 +1,74 @@
+#!/bin/bash
+
+# ==============================================================================
+# GRUP BİLGİLERİ (Grup 3-3 -> Ödev: odev_14)
+# S/N  | Okul No   | Adı Soyadı
+# 15   | 25903011  | SEMİH ÇELİKEL
+# 16   | 25903014  | RANA BEDRİYE DAĞTEKİN
+# 17   | 25904001  | ALAATTİN EFE YURTERİ
+# 18   | 25904004  | SÜLEYMAN ESER DİNÇ
+# 19   | 25904007  | ERTÜMEN YAYLA
+# 20   | 25904010  | EMİRHAN ESENOĞLU
+# 21   | 25904016  | MEHMET ENES KAYA
+# ==============================================================================
+
+# Bölüm başlığı yazdıran fonksiyon
+baslik_yaz() {
+    echo ""
+    echo "======================================"
+    echo "$1"
+    echo "======================================"
+}
+
+# ==============================================================================
+# GÖREV 1 - ARGÜMAN KONTROLÜ
+# ==============================================================================
+
+baslik_yaz "GÖREV 1: Argüman Kontrolü"
+
+# Argüman girilmiş mi kontrol edilir
+if [ -z "$1" ]; then
+    echo "Hata: Bir dizin yolu belirtilmedi!"
+    echo "Kullanım: $0 <dizin_yolu>"
+    exit 1
+fi
+
+# İlk argüman değişkene atanır
+RAPOR_YOLU="$1"
+
+# Dizin mevcut mu kontrol edilir
+if [ ! -d "$RAPOR_YOLU" ]; then
+    echo "Hata: Belirtilen dizin mevcut değil!"
+    exit 1
+fi
+
+echo "Argüman kontrolü başarılı."
+echo "Hedef dizin: $RAPOR_YOLU"
+
+# ==============================================================================
+# GÖREV 2 - ÇALIŞMA DİZİNİ HAZIRLAMA
+# ==============================================================================
+
+baslik_yaz "GÖREV 2: Çalışma Dizini Hazırlama"
+
+# Çalışma dizini tanımlanır
+CALISMA_ALANI="$HOME/surec_rapor"
+
+# Dizinin eski hali varsa silinir
+if [ -d "$CALISMA_ALANI" ]; then
+    echo "Eski çalışma dizini siliniyor..."
+    rm -rf "$CALISMA_ALANI"
+fi
+
+# Yeni çalışma dizini oluşturulur
+mkdir -p "$CALISMA_ALANI"
+
+echo "Yeni çalışma dizini oluşturuldu:"
+echo "$CALISMA_ALANI"
+
+# ==============================================================================
+# BİLGİLENDİRME
+# ==============================================================================
+
+echo ""
+echo "İlk iki görev başarıyla tamamlandı."
